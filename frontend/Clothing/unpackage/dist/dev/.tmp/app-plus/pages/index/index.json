@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mainpage": "/pages/main/main",
+    "about": "/pages/basics/about",
+    "closet": "/pages/basics/closet",
+    "moniter": "/pages/basics/moniter",
+    "recommend": "/pages/basics/recommend"
+  }
+}

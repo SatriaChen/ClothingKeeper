@@ -1,0 +1,61 @@
+{
+  "centigrade": {
+    "high": "26",
+    "low": "20"
+  },
+  "clothesResponse": {
+    "upper": [
+      {
+        "cClothesid": "2",
+        "cUid": "1",
+        "cTypeid": "上装",
+        "cSeason": "夏季",
+        "cStyle": "1",
+        "cState": "1",
+        "cFrequences": 1,
+        "cRfid": "2",
+        "cClothimg": null
+      }
+    ],
+    "bottom": [
+      {
+        "cClothesid": "5",
+        "cUid": "1",
+        "cTypeid": "下装",
+        "cSeason": "夏季",
+        "cStyle": "1",
+        "cState": "1",
+        "cFrequences": 1,
+        "cRfid": "5",
+        "cClothimg": null
+      }
+    ],
+    "suit": [
+      {
+        "cClothesid": "8",
+        "cUid": "1",
+        "cTypeid": "套装",
+        "cSeason": "夏季",
+        "cStyle": "1",
+        "cState": "1",
+        "cFrequences": 1,
+        "cRfid": "8",
+        "cClothimg": null
+      }
+    ],
+    "elseCloth": [
+      {
+        "cClothesid": "11",
+        "cUid": "1",
+        "cTypeid": "其他",
+        "cSeason": "夏季",
+        "cStyle": "1",
+        "cState": "1",
+        "cFrequences": 1,
+        "cRfid": "11",
+        "cClothimg": null
+      }
+    ]
+  },
+  "massage": null
+}

@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"popup-btn { height: 2rem; width: 2rem; }\n",],undefined,{path:"./pages/recommend/travelrecommend.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/recommend/travelrecommend.wxml') } }));

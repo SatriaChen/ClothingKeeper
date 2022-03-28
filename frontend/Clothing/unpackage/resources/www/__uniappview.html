@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"clothing","entryPagePath":"pages/index/index.html","page":{"pages/index/index.html":{"window":{"usingComponents":{"mainpage":"/pages/main/main","about":"/pages/basics/about","closet":"/pages/basics/closet","moniter":"/pages/basics/moniter","recommend":"/pages/basics/recommend"}}},"pages/main/main.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/closet/add.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/login/login.html":{"window":{"usingComponents":{}}},"colorui/components/cu-custom.html":{"window":{"usingComponents":{}}},"pages/about/favor.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/about/introduce.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/about/us.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/basics/about.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/basics/closet.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom","upper":"/pages/closet/upper","bottoms":"/pages/closet/bottoms","suit":"/pages/closet/suit","shoes":"/pages/closet/shoes"}}},"pages/basics/moniter.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom"}}},"pages/basics/recommend.html":{"window":{"usingComponents":{"cu-custom":"/colorui/components/cu-custom","dayrecommend":"/pages/recommend/dayrecommend","travelrecommend":"/pages/recommend/travelrecommend"}}},"pages/closet/bottoms.html":{"window":{"usingComponents":{}}},"pages/closet/suit.html":{"window":{"usingComponents":{}}},"pages/closet/shoes.html":{"window":{"usingComponents":{}}},"pages/closet/upper.html":{"window":{"usingComponents":{}}},"pages/recommend/dayrecommend.html":{"window":{"usingComponents":{}}},"pages/recommend/travelrecommend.html":{"window":{"usingComponents":{}}}},"global":{"window":{"navigationStyle":"custom"}},"tabBar":{"color":"","selectedColor":"","backgroundColor":"","borderStyle":"black","list":[],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/index/index","pages/main/main","pages/closet/add","pages/login/login","colorui/components/cu-custom","pages/about/favor","pages/about/introduce","pages/about/us","pages/basics/about","pages/basics/closet","pages/basics/moniter","pages/basics/recommend","pages/closet/bottoms","pages/closet/suit","pages/closet/shoes","pages/closet/upper","pages/recommend/dayrecommend","pages/recommend/travelrecommend"],"nvueCompiler":"weex","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"2.2.2","usingComponents":{"mainpage":"/pages/main/main","about":"/pages/basics/about","closet":"/pages/basics/closet","recommend":"/pages/basics/recommend","moniter":"/pages/basics/moniter","bottoms":"/pages/closet/bottoms","shoes":"/pages/closet/shoes","suit":"/pages/closet/suit","upper":"/pages/closet/upper","dayrecommend":"/pages/recommend/dayrecommend","travelrecommend":"/pages/recommend/travelrecommend","cu-custom":"/colorui/components/cu-custom"}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

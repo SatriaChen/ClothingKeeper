@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keeper.clothingkeeper.dao.TypeMapper" >
+  <resultMap id="BaseResultMap" type="com.keeper.clothingkeeper.domain.Type" >
+    <id column="T_ctypeID" property="tCtypeid" jdbcType="VARCHAR" />
+    <id column="T_tagID" property="tTagid" jdbcType="INTEGER" />
+    <result column="T_tag" property="tTag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    T_ctypeID, T_tagID, T_tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.keeper.clothingkeeper.domain.TypeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from type
+    where T_ctypeID = #{tCtypeid,jdbcType=VARCHAR}
+      and T_tagID = #{tTagid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.keeper.clothingkeeper.domain.TypeKey" >
+    delete from type
+    where T_ctypeID = #{tCtypeid,jdbcType=VARCHAR}
+      and T_tagID = #{tTagid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.keeper.clothingkeeper.domain.Type" >
+    insert into type (T_ctypeID, T_tagID, T_tag
+      )
+    values (#{tCtypeid,jdbcType=VARCHAR}, #{tTagid,jdbcType=INTEGER}, #{tTag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.keeper.clothingkeeper.domain.Type" >
+    insert into type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tCtypeid != null" >
+        T_ctypeID,
+      </if>
+      <if test="tTagid != null" >
+        T_tagID,
+      </if>
+      <if test="tTag != null" >
+        T_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tCtypeid != null" >
+        #{tCtypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="tTagid != null" >
+        #{tTagid,jdbcType=INTEGER},
+      </if>
+      <if test="tTag != null" >
+        #{tTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.keeper.clothingkeeper.domain.Type" >
+    update type
+    <set >
+      <if test="tTag != null" >
+        T_tag = #{tTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where T_ctypeID = #{tCtypeid,jdbcType=VARCHAR}
+      and T_tagID = #{tTagid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.keeper.clothingkeeper.domain.Type" >
+    update type
+    set T_tag = #{tTag,jdbcType=VARCHAR}
+    where T_ctypeID = #{tCtypeid,jdbcType=VARCHAR}
+      and T_tagID = #{tTagid,jdbcType=INTEGER}
+  </update>
+</mapper>

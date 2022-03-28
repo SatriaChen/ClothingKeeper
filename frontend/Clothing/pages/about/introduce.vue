@@ -1,0 +1,56 @@
+<template>
+	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">产品介绍</block>
+		</cu-custom>
+		
+	<view class="cu-bar bg-white margin-top">
+		<view class="action sub-title">
+			<text class="text-xl text-bold text-blue">产品介绍</text>
+			<text class="text-ABC text-blue">Introduction</text>
+			<!-- last-child选择器-->
+		</view>
+	</view>
+	<!-- <view class="cu-card case">
+		<view class="cu-item shadow">
+			<view class="image">
+				<image src="../../static/logobg.jpg"
+				 mode="widthFix"></image>
+			</view>
+		</view>
+	</view> -->
+	<view class="cu-card dynamic">
+		<view class="cu-item shadow">
+			
+			<view class="grid flex-sub padding-lr">
+				<image src="../../static/logobg.jpg"
+				 mode="widthFix"></image>
+			</view>
+	
+			<view class="cu-list menu-avatar comment solids-top">
+				<view class="cu-item">
+					
+					<view class="content justify-between">
+						
+						<view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+							<view class="flex">
+								<view class="flex-sub">本项目通过使用ESP8266，传感器，RFID技术，数据库，安卓应用的开发实现一款可以追踪所有衣服的位置的非整柜式的智能衣柜管理器，使用户可根据终端上的APP查看、搜索自己所需衣物位置信息，直接拿取。此外，APP还具智能推荐功能，旅行收纳推荐功能，洗衣监控功能，穿着记录功能，湿度警报功能等。</view>
+							</view>
+						</view>
+						<view class="margin-top-sm flex justify-end">
+							<view class="text-gray text-df">2020年2月28日</view>							
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	</view>	
+</template>
+
+<script>
+</script>
+
+<style>
+</style>

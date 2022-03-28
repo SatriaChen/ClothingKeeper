@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "upper": "/pages/closet/upper",
+    "bottoms": "/pages/closet/bottoms",
+    "suit": "/pages/closet/suit",
+    "shoes": "/pages/closet/shoes"
+  }
+}

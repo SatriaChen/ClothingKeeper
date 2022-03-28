@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keeper.clothingkeeper.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.keeper.clothingkeeper.domain.User" >
+    <id column="UserID" property="userid" jdbcType="VARCHAR" />
+    <result column="U_Name" property="uName" jdbcType="VARCHAR" />
+    <result column="U_gender" property="uGender" jdbcType="VARCHAR" />
+    <result column="U_Password" property="uPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.keeper.clothingkeeper.domain.User" extends="BaseResultMap" >
+    <result column="U_head" property="uHead" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UserID, U_Name, U_gender, U_Password
+  </sql>
+  <sql id="Blob_Column_List" >
+    U_head
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <!--通过用户名查询-->
+  <select id="selectByUsername" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where U_Name = #{username,jdbcType=VARCHAR}
+  </select>
+  <!--查询用户数-->
+  <select id="count" resultType="Integer">
+        select count(*) from user
+  </select>
+  <!--当前最大用户ID-->
+  <select id="idMax" resultType="Integer">
+        select max(UserID) from user
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.keeper.clothingkeeper.domain.User" >
+    insert into user (UserID, U_Name, U_gender, 
+      U_Password, U_head)
+    values (#{userid,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, #{uGender,jdbcType=VARCHAR}, 
+      #{uPassword,jdbcType=VARCHAR}, #{uHead,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.keeper.clothingkeeper.domain.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        UserID,
+      </if>
+      <if test="uName != null" >
+        U_Name,
+      </if>
+      <if test="uGender != null" >
+        U_gender,
+      </if>
+      <if test="uPassword != null" >
+        U_Password,
+      </if>
+      <if test="uHead != null" >
+        U_head,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uGender != null" >
+        #{uGender,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uHead != null" >
+        #{uHead,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.keeper.clothingkeeper.domain.User" >
+    update user
+    <set >
+      <if test="uName != null" >
+        U_Name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uGender != null" >
+        U_gender = #{uGender,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        U_Password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uHead != null" >
+        U_head = #{uHead,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.keeper.clothingkeeper.domain.User" >
+    update user
+    set U_Name = #{uName,jdbcType=VARCHAR},
+      U_gender = #{uGender,jdbcType=VARCHAR},
+      U_Password = #{uPassword,jdbcType=VARCHAR},
+      U_head = #{uHead,jdbcType=LONGVARBINARY}
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.keeper.clothingkeeper.domain.User" >
+    update user
+    set U_Name = #{uName,jdbcType=VARCHAR},
+      U_gender = #{uGender,jdbcType=VARCHAR},
+      U_Password = #{uPassword,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

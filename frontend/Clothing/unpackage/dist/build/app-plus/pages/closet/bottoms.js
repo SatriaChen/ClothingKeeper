@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"cu-form-group .",[1],"title { min-width: calc(4em + 15px); }\n.",[1],"box { margin: ",[0,20]," 0; }\n.",[1],"box wx-view.",[1],"cu-bar { margin-top: ",[0,20],"; }\n",],undefined,{path:"./pages/closet/bottoms.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/closet/bottoms.wxml') } }));

@@ -1,0 +1,113 @@
+{
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	{
+		"path":"pages/login/login",
+		"style":{}
+	},
+	
+		{
+		    "path" : "pages/index/index",
+		    "style" : {}
+		    },
+			{
+				"path":"pages/register/register",
+				"style":{}
+			},
+		{
+		    "path" : "pages/main/main",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/about/addmonitor",
+		    "style" : {}
+		},
+		{
+			"path":"pages/closet/add",
+			"style":{}
+		},
+	
+		{
+			"path":"colorui/components/cu-custom",
+			"style":{}
+		},
+		
+		{
+			"path":"pages/about/favor",
+			"style":{}
+		},
+		{
+			"path":"pages/about/introduce",
+			"style":{}
+		},
+		{
+			"path":"pages/about/us",
+			"style":{}
+		},
+		{
+			"path":"pages/basics/about",
+		    "style":{}
+		},
+		{
+			"path":"pages/basics/closet",
+			"style":{}
+		},
+		{
+			"path":"pages/basics/moniter",
+			"style":{}
+		},
+		{
+			"path":"pages/basics/recommend",
+			"style":{}
+		},
+		{
+			"path":"pages/closet/bottoms",
+			"style":{}
+		},
+		{
+			"path":"pages/closet/suit",
+			"style":{}
+		},
+		{
+			"path":"pages/closet/shoes",
+			"style":{}
+		},
+		{
+			"path":"pages/closet/upper",
+			"style":{}
+		},
+		{
+			"path":"pages/closet/cloth",
+			"style":{}
+		},
+		
+		{
+			"path":"pages/recommend/dayrecommend",
+			"style":{
+				"enablePullDownRefresh":true
+			}
+		},
+		{
+			"path":"pages/recommend/travelrecommend",
+			"style":{
+				"enablePullDownRefresh":true
+			}
+		}
+    ],
+    "globalStyle" : {
+        
+        	"navigationStyle": "custom"
+       
+    },
+	"usingComponts": true,
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "login", //模式名称
+				"path": "pages/login/login", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- classPathEntry用于设置数据库驱动包位置-->
+    <classPathEntry location="C:\Users\45054\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar"/>
+    <!-- targetRuntime：代码生成目标，默认是MyBatis3-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接的信息 ok -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/clothing" userId="root" password="022803">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <!-- 解决数据转换问题 ok-->
+        <javaTypeResolver>
+            <!--是否强制使用BigDecimal来表示所有的十进制和数值字段。-->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.keeper.clothingkeeper.domain" targetProject="E:\Project\clothingkeeper\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--生成的映射文件包名和位置-->
+        <sqlMapGenerator targetPackage="main/resources/mapper" targetProject="E:\Project\clothingkeeper\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.keeper.clothingkeeper.dao" targetProject="E:\Project\clothingkeeper\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--要生成那些文件-->
+        <table tableName="表名"  domainObjectName="类名"></table>
+        <table tableName="user" domainObjectName="User"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="clothes" domainObjectName="Clothes"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="type" domainObjectName="Type"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    </context>
+</generatorConfiguration>
+

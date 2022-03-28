@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keeper.clothingkeeper.dao.ClothesMapper" >
+  <resultMap id="BaseResultMap" type="com.keeper.clothingkeeper.domain.Clothes" >
+    <id column="C_clothesID" property="cClothesid" jdbcType="VARCHAR" />
+    <id column="C_UID" property="cUid" jdbcType="VARCHAR" />
+    <result column="C_typeID" property="cTypeid" jdbcType="VARCHAR" />
+    <result column="C_season" property="cSeason" jdbcType="VARCHAR" />
+    <result column="C_style" property="cStyle" jdbcType="VARCHAR" />
+    <result column="C_state" property="cState" jdbcType="VARCHAR" />
+    <result column="C_frequences" property="cFrequences" jdbcType="INTEGER" />
+    <result column="C_RFID" property="cRfid" jdbcType="VARCHAR" />
+    <result column="C_clothImg" property="cClothimg" jdbcType="VARCHAR" />
+    <result column="C_Tag" property="cTag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    C_clothesID, C_UID, C_typeID, C_season, C_style, C_state, C_frequences, C_RFID,C_Tag, C_clothImg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.keeper.clothingkeeper.domain.ClothesKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from clothes
+    where C_clothesID = #{cClothesid,jdbcType=VARCHAR}
+      and C_UID = #{cUid,jdbcType=VARCHAR}
+  </select>
+  <select id="countId" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+        select count(1)
+        from clothes
+        where C_clothesID = #{cClothesid,jdbcType=VARCHAR}
+    </select>
+  <select id="countByrfid" resultType="java.lang.Integer">
+        select count(1)
+        from clothes
+        where C_UID = #{userId,jdbcType=VARCHAR} and C_RFID = #{cRfid,jdbcType=VARCHAR}
+    </select>
+  <select id="selectByUserIdAndType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from clothes
+    where C_UID = #{userId,jdbcType=VARCHAR} and C_typeID = #{clothType,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByUserIdAndRfid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from clothes
+    where C_UID = #{userId,jdbcType=VARCHAR} and C_RFID = #{cRfid,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 查找某用户衣物数据-->
+  <select id="selectClothesRecord" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from clothes
+    where C_UID = #{cUid,jdbcType=VARCHAR}
+    and C_frequences > #{0}
+    ORDER BY ${'C_frequences '} DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.keeper.clothingkeeper.domain.ClothesKey" >
+    delete from clothes
+    where C_clothesID = #{cClothesid,jdbcType=VARCHAR}
+      and C_UID = #{cUid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.keeper.clothingkeeper.domain.Clothes" >
+    insert into clothes (C_clothesID, C_UID, C_typeID, 
+      C_season, C_style, C_state, 
+      C_frequences, C_RFID, C_Tag,C_clothImg
+      )
+    values (#{cClothesid,jdbcType=VARCHAR}, #{cUid,jdbcType=VARCHAR}, #{cTypeid,jdbcType=VARCHAR}, 
+      #{cSeason,jdbcType=VARCHAR}, #{cStyle,jdbcType=VARCHAR}, #{cState,jdbcType=VARCHAR}, 
+      #{cFrequences,jdbcType=INTEGER}, #{cRfid,jdbcType=VARCHAR},#{cTag,jdbcType=VARCHAR}, #{cClothimg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.keeper.clothingkeeper.domain.Clothes" >
+    insert into clothes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cClothesid != null" >
+        C_clothesID,
+      </if>
+      <if test="cUid != null" >
+        C_UID,
+      </if>
+      <if test="cTypeid != null" >
+        C_typeID,
+      </if>
+      <if test="cSeason != null" >
+        C_season,
+      </if>
+      <if test="cStyle != null" >
+        C_style,
+      </if>
+      <if test="cState != null" >
+        C_state,
+      </if>
+      <if test="cFrequences != null" >
+        C_frequences,
+      </if>
+      <if test="cRfid != null" >
+        C_RFID,
+      </if>
+      <if test="cTag != null" >
+        C_Tag,
+      </if>
+      <if test="cClothimg != null" >
+        C_clothImg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cClothesid != null" >
+        #{cClothesid,jdbcType=VARCHAR},
+      </if>
+      <if test="cUid != null" >
+        #{cUid,jdbcType=VARCHAR},
+      </if>
+      <if test="cTypeid != null" >
+        #{cTypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="cSeason != null" >
+        #{cSeason,jdbcType=VARCHAR},
+      </if>
+      <if test="cStyle != null" >
+        #{cStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="cState != null" >
+        #{cState,jdbcType=VARCHAR},
+      </if>
+      <if test="cFrequences != null" >
+        #{cFrequences,jdbcType=INTEGER},
+      </if>
+      <if test="cTag != null" >
+        #{cTag,jdbcType=VARCHAR},
+      </if>
+      <if test="cRfid != null" >
+        #{cRfid,jdbcType=VARCHAR},
+      </if>
+      <if test="cClothimg != null" >
+        #{cClothimg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.keeper.clothingkeeper.domain.Clothes" >
+    update clothes
+    <set >
+      <if test="cTypeid != null" >
+        C_typeID = #{cTypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="cSeason != null" >
+        C_season = #{cSeason,jdbcType=VARCHAR},
+      </if>
+      <if test="cStyle != null" >
+        C_style = #{cStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="cState != null" >
+        C_state = #{cState,jdbcType=VARCHAR},
+      </if>
+      <if test="cFrequences != null" >
+        C_frequences = #{cFrequences,jdbcType=INTEGER},
+      </if>
+      <if test="cRfid != null" >
+        C_RFID = #{cRfid,jdbcType=VARCHAR},
+      </if>
+      <if test="cTag != null" >
+        C_Tag = #{cRfid,jdbcType=VARCHAR},
+      </if>
+      <if test="cClothimg != null" >
+        C_clothImg = #{cClothimg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_clothesID = #{cClothesid,jdbcType=VARCHAR}
+      and C_UID = #{cUid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.keeper.clothingkeeper.domain.Clothes" >
+    update clothes
+    set C_typeID = #{cTypeid,jdbcType=VARCHAR},
+      C_season = #{cSeason,jdbcType=VARCHAR},
+      C_style = #{cStyle,jdbcType=VARCHAR},
+      C_state = #{cState,jdbcType=VARCHAR},
+      C_frequences = #{cFrequences,jdbcType=INTEGER},
+      C_RFID = #{cRfid,jdbcType=VARCHAR},
+      C_Tag = #{cTag,jdbcType=VARCHAR},
+      C_clothImg = #{cClothimg,jdbcType=VARCHAR}
+    where C_clothesID = #{cClothesid,jdbcType=VARCHAR}
+      and C_UID = #{cUid,jdbcType=VARCHAR}
+  </update>
+  <select id="getAllClothes" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from clothes
+    where C_UID = #{userId, jdbcType=VARCHAR}
+  </select>
+</mapper>
